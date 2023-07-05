@@ -1,0 +1,40 @@
+[
+ {
+  "name": "PDF2Images",
+  "description": "",
+  "group": "Custom",
+  "icon": "RiArrowGoForwardLine",
+  "click": null,
+  "events": null,
+  "configured": true,
+  "inputs": [
+   {
+    "id": "convert_pdf",
+    "label": "convert pdf",
+    "service": "convert_pdf",
+    "to": "convert_pdf"
+   }
+  ],
+  "outputs": [
+   {
+    "id": "convert_pdf",
+    "label": "convert pdf"
+   }
+  ],
+  "options": {
+   "values": {},
+   "args": [
+    {
+     "name": "directory",
+     "type": "directories",
+     "label": "Saving directory",
+     "helper": "",
+     "group": "",
+     "value": null,
+     "description": "",
+     "validation": null
+    }
+   ]
+  }
+ }
+]

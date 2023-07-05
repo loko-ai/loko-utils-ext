@@ -1,0 +1,6 @@
+fastapi
+loko-client
+loko-extensions
+pdf2image
+python-multipart
+uvicorn
