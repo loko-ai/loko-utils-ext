@@ -1,13 +1,217 @@
 {
-  "name": "loko_utils_ext",
-  "id": "loko_utils_ext",
+  "name": "loko-utils-ext",
+  "id": "loko-utils-ext",
   "description": "",
   "created_on": "05/07/2023, 13:50:44",
-  "last_modify": "05/07/2023, 13:50:44",
+  "last_modify": "05/07/2023, 15:33:02",
   "graphs": {
     "main": {
-      "nodes": [],
-      "edges": [],
+      "nodes": [
+        {
+          "id": "f4329abe-a90d-4dcf-8357-9ff853864003",
+          "position": {
+            "x": 641,
+            "y": 265
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 150,
+          "height": 56,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "PDF2Image",
+            "events": null,
+            "description": "",
+            "inputs": [
+              {
+                "id": "convert_pdf",
+                "label": "convert pdf",
+                "service": "convert_pdf",
+                "to": "convert_pdf"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "convert_pdf",
+                "label": "convert pdf"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "Custom",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "directory",
+                  "type": "directories",
+                  "label": "Saving directory",
+                  "helper": "",
+                  "group": "",
+                  "value": null,
+                  "description": "",
+                  "validation": null
+                }
+              ],
+              "click": null,
+              "icon": "RiArrowGoForwardLine",
+              "values": {
+                "comment": "",
+                "alias": "",
+                "debug": true,
+                "directory": {
+                  "name": "result_pdf_converter",
+                  "path": "data/data/result_pdf_converter",
+                  "parent": "data/data",
+                  "isDir": true,
+                  "hidden": false
+                }
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "__class__": "Node"
+        },
+        {
+          "id": "5c7eb384-0a4a-4ff6-b0b1-a3ee39dbb78e",
+          "position": {
+            "x": 338,
+            "y": 283
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 156,
+          "height": 88,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "File Reader",
+            "events": null,
+            "description": "### Description\nThe FILE READER component allows the reading of individual files.\n\n### Output\nSetting the **Read Content** parameter to **False**, the output provides the file path in PosixPath format. The component will then need to be connected to other components to read the content, for example *LineReader*.\n\nOn the contrary, setting the **Read Content** parameter to **True**, you can choose whether to read the content in *Binary* format. This format will be selected for reading non-text files.",
+            "inputs": [
+              {
+                "id": "input",
+                "label": "input"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "Inputs",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "value",
+                  "type": "files",
+                  "label": "File",
+                  "fragment": "files",
+                  "validation": {
+                    "required": "Required field"
+                  }
+                },
+                {
+                  "name": "read_content",
+                  "type": "boolean",
+                  "label": "Read content"
+                },
+                {
+                  "name": "binary",
+                  "type": "dynamic",
+                  "label": "Binary",
+                  "dynamicType": {
+                    "true": "boolean"
+                  },
+                  "parent": "read_content"
+                }
+              ],
+              "click": "Send file",
+              "icon": "RiFileList3Fill",
+              "values": {
+                "comment": "",
+                "alias": "",
+                "debug": false,
+                "read_content": false,
+                "value": {
+                  "name": "5812420.pdf",
+                  "path": "data/data/dati_previnet/doc_labelized/fatture/5812420.pdf",
+                  "parent": "data/data/dati_previnet/doc_labelized/fatture",
+                  "isDir": false,
+                  "hidden": false
+                }
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "positionAbsolute": {
+            "x": 338,
+            "y": 283
+          },
+          "__class__": "Node"
+        }
+      ],
+      "edges": [
+        {
+          "id": "reactflow__edge-5c7eb384-0a4a-4ff6-b0b1-a3ee39dbb78eoutput-f4329abe-a90d-4dcf-8357-9ff853864003convert_pdf",
+          "source": "5c7eb384-0a4a-4ff6-b0b1-a3ee39dbb78e",
+          "sourceHandle": "output",
+          "target": "f4329abe-a90d-4dcf-8357-9ff853864003",
+          "targetHandle": "convert_pdf",
+          "data": {
+            "startColor": "#F8637A",
+            "stopColor": "#888"
+          },
+          "selected": false,
+          "dragging": false,
+          "__class__": "Edge"
+        }
+      ],
       "__class__": "Graph"
     }
   },

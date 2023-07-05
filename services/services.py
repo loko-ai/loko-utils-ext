@@ -1,24 +1,27 @@
-from flask import Flask, request, jsonify
+import uvicorn as uvicorn
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse
+from loguru import logger
+from loko_extensions.business.decorator_fastapi import ExtractValueArgsFastAPI
 
-app = Flask("")
+from business.pdf_converter import pdf_to_image
+from config.AppConfig import PORT
 
-
-@app.route("/", methods=["POST"])
-def test():
-    args = request.json.get('args')
-    print("ARGS",args)
-    json = request.json.get("value")
-    print("JSON",json)
-    return jsonify(dict(msg="Hello extensions!"))
+app = FastAPI()
 
 
-@app.route("/files", methods=["POST"])
-def test2():
-    file = request.files['file']
-    fname = file.filename
-    print("You have uploaded a file called:",fname)
-    return jsonify(dict(msg=f"Hello extensions, you have uploaded the file: {fname}!"))
+@app.post('/convert_pdf', response_class=JSONResponse)
+@ExtractValueArgsFastAPI(file=True)
+def convert_pdf(file, args):
+    directory = args.get("directory", None)
+    logger.debug(directory)
+    if not directory:
+        msg = "Saving directory not specified! You have to specify the final directory of the image."
+        raise HTTPException(status_code=400, detail=msg)
+    pdf_to_image(file=file, directory=directory.get("path"))
+    return JSONResponse("File correctly saved")
+
 
 
 if __name__ == "__main__":
-    app.run("0.0.0.0", 8080)
+    uvicorn.run(app, host="0.0.0.0", port=PORT)
