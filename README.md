@@ -25,8 +25,8 @@ This component helps you reading textual content from a Machine Readable pdf.
 The two input pins allow to extract the content both from a url and file, which can be read with a File Reader block.
 
 <p float="left"  align="middle">
-  <img src="resources/pdf_reader_pin1.png" width=50%x />
-  <img src="resources/pdf_reader_pin2.png" width=50%x />
+  <img src="resources/pdf_reader_pin1.png" width=32%x />
+  <img src="resources/pdf_reader_pin2.png" width=32%x />
 </p>
 
 # How to use it
